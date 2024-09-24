@@ -1,11 +1,12 @@
 import "package:firebase_auth/firebase_auth.dart";
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:typed_data';
 
 import '../model/my_user.dart';
 class MyFirebaseHelper{
   final auth = FirebaseAuth.instance;
-  final storage = FirebaseAuth.instance;
+  final storage = FirebaseStorage.instance;
   final cloudUtilisateur = FirebaseFirestore.instance.collection("UTILISATEURS");
 
 
@@ -54,6 +55,15 @@ class MyFirebaseHelper{
 
 
 //uploader une Image
+Future<String>updloadingPhoto(String nameImage, Uint8List bytesPhoto,String uid){
+    String url;
+    TaskSnapshot snapshot = await storage.ref("IMAGES/$uid/$nameImage").putData(bytesPhoto);
+    url = await snapshot.ref.getDownloadURL();
+
+
+    return url;
+
+}
 
 
 }
