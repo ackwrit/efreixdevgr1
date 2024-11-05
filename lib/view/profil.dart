@@ -48,7 +48,6 @@ class _MyProfilState extends State<MyProfil> {
   
   checkPhoto() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.image,
       withData: true,
     );
     if(result != null){
@@ -70,7 +69,7 @@ class _MyProfilState extends State<MyProfil> {
           GestureDetector(
             onTap:checkPhoto,
             child: CircleAvatar(
-              radius : 120,
+              radius : 80,
               backgroundImage : NetworkImage(me.avatar!),
 
             ),

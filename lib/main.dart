@@ -69,9 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
         context: context,
         builder: (context)
       {
-      return AlertDialog.adaptive(
-        title: Text("Message erreur"),
-        content: Text("Il y a une erreur lors de votre saisie"),
+      return  AlertDialog.adaptive(
+        title:  Text("Message erreur"),
+        content:  Text("Il y a une erreur lors de votre saisie"),
         actions: [
           TextButton(
               onPressed: () {

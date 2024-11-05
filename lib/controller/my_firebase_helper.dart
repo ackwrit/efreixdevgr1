@@ -2,6 +2,7 @@ import "package:firebase_auth/firebase_auth.dart";
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:typed_data';
+import 'dart:async';
 
 import '../model/my_user.dart';
 class MyFirebaseHelper{
@@ -55,7 +56,7 @@ class MyFirebaseHelper{
 
 
 //uploader une Image
-Future<String>updloadingPhoto(String nameImage, Uint8List bytesPhoto,String uid){
+Future<String>updloadingPhoto(String nameImage, Uint8List bytesPhoto,String uid) async {
     String url;
     TaskSnapshot snapshot = await storage.ref("IMAGES/$uid/$nameImage").putData(bytesPhoto);
     url = await snapshot.ref.getDownloadURL();
